@@ -18,7 +18,6 @@ class Program
         words.Add("Tom");
         words.Add("Tom");
         
-        
         int NumberOfListItems = words.Count;
         
         Console.WriteLine(NumberOfListItems);
