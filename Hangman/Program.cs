@@ -48,7 +48,10 @@ class Program
         {
             Console.WriteLine("Guess a letter: ");
             char guess = Console.ReadKey().KeyChar;
+            char.ToUpper(guess);
+            //ConsoleKeyInfo guessKey = Console.ReadKey();
 
+            
             List<int> charIndex = [];
             int startAt = 0;
             int charLocation = 0;
@@ -63,12 +66,12 @@ class Program
                     wrongGuesses++;
                     break;
                 }
-                charIndex.Add(charLocation);
-                startAt = charLocation + 1;
-                
-                //Console.WriteLine("\n" + word.IndexOf(guess, startAt));
-                
-                charCount++;
+                if (charLocation != -1)
+                {
+                    charIndex.Add(charLocation);
+                    startAt = charLocation + 1;
+                    charCount++;
+                }
             }
             
             // insert guessed char at indexes provided
@@ -77,6 +80,7 @@ class Program
                 guessesList[val] = guess;
             }
             
+            Console.Clear();
             Console.WriteLine(guessesList);
             Console.WriteLine($"Number of guesses: {numberOfGuesses}, wrong guesses: {wrongGuesses}");
 
