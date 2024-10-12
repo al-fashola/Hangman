@@ -11,7 +11,7 @@ class Program
         Console.WriteLine($"Hello, Today we will be playing Hangman! you will have {MAX_WRONG_GUESSES} strikes and {MAX_NUMBER_OF_GUESSES} total guesses!");
         
         List<string> words = new List<string>();
-        words.Add("baby");
+        words.Add("baby");/*
         words.Add("cataclysmic");
         words.Add("archaebacteria");
         words.Add("liposuction");
@@ -22,7 +22,7 @@ class Program
         words.Add("calibration");
         words.Add("aptitude");
         words.Add("conceited");
-        
+        */
         
         int numberOfListItems = words.Count;
         
@@ -38,17 +38,18 @@ class Program
         //present the number of characters in the hangman word and split into individual characters as an array 
         char[] guessesList = String.Concat(Enumerable.Repeat("_", word.Length)).ToCharArray();
         Console.WriteLine(guessesList);
-     
+
+        string final = "";
         
-        while (numberOfGuesses <= MAX_NUMBER_OF_GUESSES & wrongGuesses < MAX_WRONG_GUESSES )
+        while (numberOfGuesses <= MAX_NUMBER_OF_GUESSES & wrongGuesses < MAX_WRONG_GUESSES & final != word )
         {
-            string final = string.Join("", guessesList);
-            if (final == word)
+            final = string.Join("", guessesList);
+            /*if (final == word)
             {
                 Console.WriteLine("You Win!");
                 Environment.Exit(0);
                 //break;
-            }
+            }*/
             
             Console.WriteLine("Guess a letter: ");
             char guess = Console.ReadKey().KeyChar;
@@ -85,9 +86,18 @@ class Program
 
 
         }
+
+        if (final == word)
+        {
+            Console.WriteLine("You Win!");  
+        }
+        else
+        {
+            Console.WriteLine("You Lose! ");
+            Console.WriteLine($"The word: {word}");  
+        }
         
-        Console.WriteLine("You Lose! ");
-        Console.WriteLine($"The word: {word}");
+        
         //Console.WriteLine($"The word is : {word} and guess integer is: {randomListSelection}");
 
 
