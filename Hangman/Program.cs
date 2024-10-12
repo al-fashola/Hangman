@@ -4,15 +4,16 @@ class Program
 {
     static void Main(string[] args)
     {
-        const int NUMBEROFGUESSES = 10;
+        const int NUMBEROFGUESSES = 15;
         const int MAXWRONGGUESSES = 3;
         
         //intro message
         Console.WriteLine($"Hello, Today we will be playing Hangman! you will have {MAXWRONGGUESSES} strikes");
         
         List<string> words = new List<string>();
+        words.Add("baby");
+        words.Add("cataclysmic");
         words.Add("archaebacteria");
-        /*words.Add("cataclysmic");
         words.Add("liposuction");
         words.Add("extravaganza");
         words.Add("population");
@@ -21,7 +22,7 @@ class Program
         words.Add("calibration");
         words.Add("aptitude");
         words.Add("conceited");
-        */
+        
         
         int numberOfListItems = words.Count;
         
@@ -36,22 +37,23 @@ class Program
         
         //present the number of characters in the hangman word and split into individual characters as an array 
         char[] guessesList = String.Concat(Enumerable.Repeat("_", word.Length)).ToCharArray();
+        Console.WriteLine(guessesList);
+     
         
-        
-        //int length = guessesList.Length;
-        //Console.WriteLine(length);
-        //Console.WriteLine(guessesList);
-        
-        
-        
-        while (numberOfGuesses <= NUMBEROFGUESSES & wrongGuesses < MAXWRONGGUESSES)
+        while (numberOfGuesses <= NUMBEROFGUESSES & wrongGuesses < MAXWRONGGUESSES )
         {
+            string final = string.Join("", guessesList);
+            if (final == word)
+            {
+                Console.WriteLine("You Win!");
+                Environment.Exit(0);
+                //break;
+            }
+            
             Console.WriteLine("Guess a letter: ");
             char guess = Console.ReadKey().KeyChar;
             char.ToUpper(guess);
-            //ConsoleKeyInfo guessKey = Console.ReadKey();
-
-            
+          
             List<int> charIndex = [];
             int startAt = 0;
             int charLocation = 0;
@@ -68,37 +70,25 @@ class Program
                 }
                 if (charLocation != -1)
                 {
-                    charIndex.Add(charLocation);
+                    //charIndex.Add(charLocation);
+                    guessesList[charLocation] = guess;
                     startAt = charLocation + 1;
                     charCount++;
+                    // Notes: i could technically input the correct guessed strings into guessesList here
                 }
             }
-            
-            // insert guessed char at indexes provided
-            foreach (int val in charIndex)
-            {
-                guessesList[val] = guess;
-            }
-            
+
+            numberOfGuesses++;
             Console.Clear();
             Console.WriteLine(guessesList);
             Console.WriteLine($"Number of guesses: {numberOfGuesses}, wrong guesses: {wrongGuesses}");
 
-            
-            
-           // guess.ToCharArray()
-
 
         }
         
-        //string x = ["_"] * NumberOfListItems; 
-        
-        //List<string> hangmanWord = new List<string>();
-        Console.WriteLine($"Guessed word: {word}");
-        
-        Console.WriteLine($"The word is : {word} and guess integer is: {guessListInteger}");
-
-        //Console.WriteLine(word.IndexOf('O'));
+        Console.WriteLine("You Lose! ");
+        Console.WriteLine($"The word: {word}");
+        //Console.WriteLine($"The word is : {word} and guess integer is: {guessListInteger}");
 
 
 
