@@ -4,11 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        const int NUMBEROFGUESSES = 15;
+        const int MAX_NUMBER_OF_GUESSES = 15;
         const int MAXWRONGGUESSES = 3;
         
         //intro message
-        Console.WriteLine($"Hello, Today we will be playing Hangman! you will have {MAXWRONGGUESSES} strikes");
+        Console.WriteLine($"Hello, Today we will be playing Hangman! you will have {MAXWRONGGUESSES} strikes and {MAX_NUMBER_OF_GUESSES} total guesses!");
         
         List<string> words = new List<string>();
         words.Add("baby");
@@ -28,8 +28,8 @@ class Program
         
         //Console.WriteLine(NumberOfListItems);
         Random rand = new();
-        int guessListInteger = rand.Next(0, numberOfListItems);
-        string word = words[guessListInteger];
+        int randomListSelection = rand.Next(0, numberOfListItems);
+        string word = words[randomListSelection];
         word = word.ToUpper();
         
         int numberOfGuesses = 0;
@@ -40,7 +40,7 @@ class Program
         Console.WriteLine(guessesList);
      
         
-        while (numberOfGuesses <= NUMBEROFGUESSES & wrongGuesses < MAXWRONGGUESSES )
+        while (numberOfGuesses <= MAX_NUMBER_OF_GUESSES & wrongGuesses < MAXWRONGGUESSES )
         {
             string final = string.Join("", guessesList);
             if (final == word)
@@ -88,7 +88,7 @@ class Program
         
         Console.WriteLine("You Lose! ");
         Console.WriteLine($"The word: {word}");
-        //Console.WriteLine($"The word is : {word} and guess integer is: {guessListInteger}");
+        //Console.WriteLine($"The word is : {word} and guess integer is: {randomListSelection}");
 
 
 
