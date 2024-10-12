@@ -5,10 +5,10 @@ class Program
     static void Main(string[] args)
     {
         const int MAX_NUMBER_OF_GUESSES = 15;
-        const int MAXWRONGGUESSES = 3;
+        const int MAX_WRONG_GUESSES = 3;
         
         //intro message
-        Console.WriteLine($"Hello, Today we will be playing Hangman! you will have {MAXWRONGGUESSES} strikes and {MAX_NUMBER_OF_GUESSES} total guesses!");
+        Console.WriteLine($"Hello, Today we will be playing Hangman! you will have {MAX_WRONG_GUESSES} strikes and {MAX_NUMBER_OF_GUESSES} total guesses!");
         
         List<string> words = new List<string>();
         words.Add("baby");
@@ -40,7 +40,7 @@ class Program
         Console.WriteLine(guessesList);
      
         
-        while (numberOfGuesses <= MAX_NUMBER_OF_GUESSES & wrongGuesses < MAXWRONGGUESSES )
+        while (numberOfGuesses <= MAX_NUMBER_OF_GUESSES & wrongGuesses < MAX_WRONG_GUESSES )
         {
             string final = string.Join("", guessesList);
             if (final == word)
@@ -52,9 +52,9 @@ class Program
             
             Console.WriteLine("Guess a letter: ");
             char guess = Console.ReadKey().KeyChar;
-            char.ToUpper(guess);
+            guess = char.ToUpper(guess);
           
-            List<int> charIndex = [];
+          
             int startAt = 0;
             int charLocation = 0;
             int charCount = 0;
@@ -74,7 +74,7 @@ class Program
                     guessesList[charLocation] = guess;
                     startAt = charLocation + 1;
                     charCount++;
-                    // Notes: i could technically input the correct guessed strings into guessesList here
+                    
                 }
             }
 
