@@ -4,12 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        //intro message
-        Console.WriteLine("Hello, Today we will be playing Hangman!");
-        
-        // Populate list with random words ( look into word generator like name generator exists e.g test data)
         const int NUMBEROFGUESSES = 10;
         const int MAXWRONGGUESSES = 3;
+        
+        //intro message
+        Console.WriteLine($"Hello, Today we will be playing Hangman! you will have {MAXWRONGGUESSES} strikes");
         
         List<string> words = new List<string>();
         words.Add("archaebacteria");
@@ -35,13 +34,20 @@ class Program
         int numberOfGuesses = 0;
         int wrongGuesses = 0;
         
-        string guessesString = String.Concat(Enumerable.Repeat("_", word.Length));
-        Console.WriteLine(guessesString);
+        //present the number of characters in the hangman word and split into individual characters as an array 
+        char[] guessesList = String.Concat(Enumerable.Repeat("_", word.Length)).ToCharArray();
+        
+        
+        //int length = guessesList.Length;
+        //Console.WriteLine(length);
+        //Console.WriteLine(guessesList);
+        
+        
         
         while (numberOfGuesses <= NUMBEROFGUESSES & wrongGuesses < MAXWRONGGUESSES)
         {
-            Console.WriteLine("Guess a letter:");
-            string guess = Console.ReadLine();
+            Console.WriteLine("Guess a letter: ");
+            char guess = Console.ReadKey().KeyChar;
 
             List<int> charIndex = [];
             int startAt = 0;
@@ -59,10 +65,21 @@ class Program
                 }
                 charIndex.Add(charLocation);
                 startAt = charLocation + 1;
+                
+                //Console.WriteLine("\n" + word.IndexOf(guess, startAt));
+                
                 charCount++;
             }
-            // insert guessed char at indexes provided
             
+            // insert guessed char at indexes provided
+            foreach (int val in charIndex)
+            {
+                guessesList[val] = guess;
+            }
+            
+            Console.WriteLine(guessesList);
+            Console.WriteLine($"Number of guesses: {numberOfGuesses}, wrong guesses: {wrongGuesses}");
+
             
             
            // guess.ToCharArray()
@@ -77,7 +94,7 @@ class Program
         
         Console.WriteLine($"The word is : {word} and guess integer is: {guessListInteger}");
 
-        Console.WriteLine(word.IndexOf('O'));
+        //Console.WriteLine(word.IndexOf('O'));
 
 
 
