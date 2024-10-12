@@ -11,7 +11,7 @@ class Program
         Console.WriteLine($"Hello, Today we will be playing Hangman! you will have {MAX_WRONG_GUESSES} strikes and {MAX_NUMBER_OF_GUESSES} total guesses!");
         
         List<string> words = new List<string>();
-        words.Add("baby");/*
+        words.Add("baby");
         words.Add("cataclysmic");
         words.Add("archaebacteria");
         words.Add("liposuction");
@@ -22,7 +22,7 @@ class Program
         words.Add("calibration");
         words.Add("aptitude");
         words.Add("conceited");
-        */
+        
         
         int numberOfListItems = words.Count;
         
