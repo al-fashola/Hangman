@@ -43,7 +43,7 @@ class Program
         
         while (numberOfGuesses <= MAX_NUMBER_OF_GUESSES & wrongGuesses < MAX_WRONG_GUESSES & final != word )
         {
-            final = string.Join("", guessesList);
+            
             /*if (final == word)
             {
                 Console.WriteLine("You Win!");
@@ -78,7 +78,7 @@ class Program
                     
                 }
             }
-
+            final = string.Join("", guessesList);
             numberOfGuesses++;
             Console.Clear();
             Console.WriteLine(guessesList);
