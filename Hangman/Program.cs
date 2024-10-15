@@ -26,7 +26,6 @@ class Program
         
         int numberOfListItems = words.Count;
         
-        //Console.WriteLine(NumberOfListItems);
         Random rand = new();
         int randomListSelection = rand.Next(0, numberOfListItems);
         string word = words[randomListSelection];
@@ -43,14 +42,7 @@ class Program
         
         while (numberOfGuesses <= MAX_NUMBER_OF_GUESSES & wrongGuesses < MAX_WRONG_GUESSES & final != word )
         {
-            
-            /*if (final == word)
-            {
-                Console.WriteLine("You Win!");
-                Environment.Exit(0);
-                //break;
-            }*/
-            
+        
             Console.WriteLine("Guess a letter: ");
             char guess = Console.ReadKey().KeyChar;
             guess = char.ToUpper(guess);
@@ -71,7 +63,6 @@ class Program
                 }
                 if (charLocation != -1)
                 {
-                    //charIndex.Add(charLocation);
                     guessesList[charLocation] = guess;
                     startAt = charLocation + 1;
                     charCount++;
@@ -97,11 +88,6 @@ class Program
             Console.WriteLine($"The word: {word}");  
         }
         
-        
-        //Console.WriteLine($"The word is : {word} and guess integer is: {randomListSelection}");
-
-
-
 
     }
 }
